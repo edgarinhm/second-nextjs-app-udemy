@@ -1,3 +1,7 @@
 export const locale = {
-  HomeTitle: "snippets",
+  HomeTitle: "home page",
+  SnippetCreateTitle: "create a snippet!",
+  SnippetFormTitle: "title",
+  SnippetFormCode: "code",
+  ActionButtonCreate: "create",
 };
