@@ -1,3 +1,3 @@
 export const locale = {
-  HomeTitle: "snippets",
+  HomeTitle: "Home Page",
 };
