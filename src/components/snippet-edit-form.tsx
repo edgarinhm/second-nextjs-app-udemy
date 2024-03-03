@@ -1,6 +1,8 @@
 "use client";
 
 import { SnippetModel } from "@/models/snippet-model";
+import { Editor } from "@monaco-editor/react";
+import { useState } from "react";
 
 interface SnippetEditFormProps {
   snippet: SnippetModel;
@@ -9,5 +11,22 @@ interface SnippetEditFormProps {
 export default function SnippetEditForm({
   snippet,
 }: Readonly<SnippetEditFormProps>) {
-  return <h1>Client component has snippet with title {snippet.title}</h1>;
+  const [code, setCode] = useState(snippet.code);
+
+  const handleEditorChange = (value: string = "") => {
+    setCode(value);
+  };
+
+  return (
+    <div>
+      <Editor
+        height="40vh"
+        theme="vs-dark"
+        language="javascript"
+        defaultValue={snippet.code}
+        options={{ minimap: { enabled: false } }}
+        onChange={handleEditorChange}
+      />
+    </div>
+  );
 }
