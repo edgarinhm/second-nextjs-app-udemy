@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watchAll",
-    "test:ci": "jest --ci"
+    "test:ci": "jest --ci",
+    "prisma": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.10.2",
