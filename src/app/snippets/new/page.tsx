@@ -2,10 +2,10 @@ import { locale } from "@/constants/locale";
 export default function SnippetsCreatePage() {
   return (
     <form action="">
-      <h3 className="font-bold m-3">{locale.SnippetCreateTitle}</h3>
+      <h3 className="font-bold m-3 capitalize">{locale.SnippetCreateTitle}</h3>
       <div className="flex flex-col gap-4">
         <div className="flex gap-4">
-          <label className="w-12" htmlFor="title">
+          <label className="w-12 capitalize" htmlFor="title">
             {locale.SnippetFormTitle}
           </label>
           <input
@@ -16,7 +16,7 @@ export default function SnippetsCreatePage() {
           />
         </div>
         <div className="flex gap-4">
-          <label className="w-12" htmlFor="code">
+          <label className="w-12 capitalize" htmlFor="code">
             {locale.SnippetFormCode}
           </label>
           <textarea
@@ -25,7 +25,7 @@ export default function SnippetsCreatePage() {
             id="code"
           />
         </div>
-        <button type="submit" className="rounded p-2 bg-blue-200">
+        <button type="submit" className="rounded p-2 bg-blue-200 capitalize">
           {locale.ActionButtonCreate}
         </button>
       </div>
