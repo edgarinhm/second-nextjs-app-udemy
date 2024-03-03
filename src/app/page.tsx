@@ -1,3 +1,5 @@
+import { locale } from "@/constants/locale";
+
 export default function Home() {
-  return <main></main>;
+  return <div>{locale.HomeTitle}</div>;
 }
