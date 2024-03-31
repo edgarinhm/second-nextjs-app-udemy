@@ -1,3 +1,4 @@
+import * as actions from "@/app/actions/snippets-actions";
 import { locale } from "@/constants/locale";
 import { GetSnippetById } from "@/services/snippet-service";
 import Link from "next/link";
@@ -23,6 +24,9 @@ export default async function SnippetShowPage(
   if (!snippet) {
     return notFound();
   }
+
+  const deleteSnippetAction = actions.deleteSnippet.bind(null, snippet);
+
   return (
     <div>
       <div className="flex m-4 justify-between items-center">
@@ -34,9 +38,11 @@ export default async function SnippetShowPage(
           >
             {locale.ActionButtonEdit}
           </Link>
-          <button className="p-2 border rounded">
-            {locale.ActionButtonDelete}
-          </button>
+          <form action={deleteSnippetAction}>
+            <button className="p-2 border rounded">
+              {locale.ActionButtonDelete}
+            </button>
+          </form>
         </div>
       </div>
       <pre className="p-3 border rounded bg-gray-200 border-gray-200">

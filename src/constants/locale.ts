@@ -8,4 +8,5 @@ export const locale = {
   ActionButtonNew: "new",
   ActionButtonEdit: "edit",
   ActionButtonDelete: "delete",
+  ActionButtonSave: "save",
 };

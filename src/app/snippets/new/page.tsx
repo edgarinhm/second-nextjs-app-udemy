@@ -7,7 +7,7 @@ interface SnippetModel {
   code: string;
 }
 export default function SnippetsCreatePage() {
-  const createSnippet = async (formDada: FormData): Promise<void> => {
+  const createSnippetAction = async (formDada: FormData): Promise<void> => {
     /**This needs to be a server action!*/
     "use server";
 
@@ -24,7 +24,7 @@ export default function SnippetsCreatePage() {
     redirect("/");
   };
   return (
-    <form action={createSnippet}>
+    <form action={createSnippetAction}>
       <h3 className="font-bold m-3 capitalize">{locale.SnippetCreateTitle}</h3>
       <div className="flex flex-col gap-4">
         <div className="flex gap-4">

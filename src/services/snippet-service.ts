@@ -23,3 +23,22 @@ export const GetSnippetById = async (
     where: { id: id },
   });
 };
+
+/**update a record in the database */
+export const UpdateSnippet = async (
+  snippet: SnippetModel
+): Promise<SnippetModel> => {
+  return await db.snippet.update({
+    where: { id: snippet.id },
+    data: snippet,
+  });
+};
+
+/**delete a record in the database */
+export const DeleteSnippet = async (
+  snippet: SnippetModel
+): Promise<SnippetModel> => {
+  return await db.snippet.delete({
+    where: { id: snippet.id },
+  });
+};
