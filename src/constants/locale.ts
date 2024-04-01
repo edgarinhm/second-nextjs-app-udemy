@@ -9,4 +9,5 @@ export const locale = {
   ActionButtonEdit: "edit",
   ActionButtonDelete: "delete",
   ActionButtonSave: "save",
+  SnippetCreateFailure: "fail to save to database.",
 };
