@@ -1,28 +1,18 @@
+"use client";
+
 import { locale } from "@/constants/locale";
-import { CreateSnippet } from "@/services/snippet-service";
-import { redirect } from "next/navigation";
+import * as actions from "@/app/actions/snippets-actions";
+import { useFormState } from "react-dom";
 
 interface SnippetModel {
   title: string;
   code: string;
 }
 export default function SnippetsCreatePage() {
-  const createSnippetAction = async (formDada: FormData): Promise<void> => {
-    /**This needs to be a server action!*/
-    "use server";
+  const [formState, createSnippetAction] = useFormState(actions.createSnippet, {
+    message: "",
+  });
 
-    /**Check the user's inputs and make sure they are valid*/
-    const snippetModel = {
-      title: formDada.get("title"),
-      code: formDada.get("code"),
-    } as SnippetModel;
-
-    /**Create new record in the database */
-    await CreateSnippet(snippetModel);
-
-    /**Redirect the user back to the root route */
-    redirect("/");
-  };
   return (
     <form action={createSnippetAction}>
       <h3 className="font-bold m-3 capitalize">{locale.SnippetCreateTitle}</h3>
@@ -48,6 +38,13 @@ export default function SnippetsCreatePage() {
             id="code"
           />
         </div>
+
+        {formState?.message && (
+          <div className="my-2 p-2 bg-red-200 border rounded border-red-400">
+            {formState.message}
+          </div>
+        )}
+
         <button type="submit" className="rounded p-2 bg-blue-200 capitalize">
           {locale.ActionButtonCreate}
         </button>
