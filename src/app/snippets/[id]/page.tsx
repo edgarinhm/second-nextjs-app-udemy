@@ -1,6 +1,6 @@
 import * as actions from "@/app/actions/snippets-actions";
 import { locale } from "@/constants/locale";
-import { GetSnippetById } from "@/services/snippet-service";
+import { GetSnippetById, GetSnippets } from "@/services/snippet-service";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -50,4 +50,14 @@ export default async function SnippetShowPage(
       </pre>
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  const snippets = await GetSnippets();
+
+  return snippets.map((snippet) => {
+    return {
+      id: snippet.id.toString(),
+    };
+  });
 }

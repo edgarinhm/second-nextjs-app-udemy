@@ -8,15 +8,18 @@ import {
   UpdateSnippet,
 } from "@/services/snippet-service";
 import { SnippetValidation } from "@/validations/snippets-validation";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function editSnippet(snippet: SnippetModel) {
   await UpdateSnippet(snippet);
+  revalidatePath(`/snippets/${snippet.id}`);
   redirect(`/snippets/${snippet.id}`);
 }
 
 export async function deleteSnippet(snippet: SnippetModel) {
   await DeleteSnippet(snippet);
+  revalidatePath("/");
   redirect("/");
 }
 export const createSnippet = async (
@@ -42,6 +45,7 @@ export const createSnippet = async (
     return { message: locale.SnippetCreateFailure };
   }
 
+  revalidatePath("/");
   /**Redirect the user back to the root route */
   redirect("/");
 };
